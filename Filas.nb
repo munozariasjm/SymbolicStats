@@ -1,0 +1,1020 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     35136,       1012]
+NotebookOptionsPosition[     31898,        913]
+NotebookOutlinePosition[     32377,        934]
+CellTagsIndexPosition[     32295,        929]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Teor\[IAcute]a de Filas", "Title",
+ CellChangeTimes->{{3.8280897269350863`*^9, 3.828089731567214*^9}}],
+
+Cell[" ", "Text",
+ Editable->False,
+ Selectable->False,
+ CellFrame->{{0, 0}, {0, 2}},
+ ShowCellBracket->False,
+ CellMargins->{{0, 0}, {1, 1}},
+ CellElementSpacings->{"CellMinHeight"->1},
+ CellFrameMargins->0,
+ CellFrameColor->RGBColor[0, 0, 1],
+ CellSize->{Inherited, 4}],
+
+Cell[CellGroupData[{
+
+Cell["Fila M/M/1", "Subchapter",
+ CellChangeTimes->{{3.8280897434421167`*^9, 3.8280897547793617`*^9}, 
+   3.828089911539315*^9}],
+
+Cell["\<\
+Esta es una fila con tiempos de entrada distribuidos exponencialmente con \
+intensidad \[Lambda] clientes por tiempo, y son atendidos por un \
+\[UAcute]nico servidor con intensidad \[Mu] clientes por tiempo. \
+Adicionalmente, el sistema tiene un \[UAcute]nico servidor y una capacidad de \
+fila infinita.
+Para este sistema definimos el factor de fila \[Rho] como:\
+\>", "Text",
+ CellChangeTimes->{{3.828089765395071*^9, 3.828089954737008*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Rho]mm1", "[", 
+    RowBox[{"\[Lambda]_", ",", " ", "\[Mu]_"}], "]"}], ":=", 
+   RowBox[{"\[Lambda]", "/", "\[Mu]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.82808995983419*^9, 3.828090019124867*^9}, 
+   3.8284486637920933`*^9}],
+
+Cell["\<\
+Si queremos que el sistema alcance una distribuci\[OAcute]n estacionaria \
+\[Pi] en el infinito es necesario que \[Rho] sea menor que 1, a largo plazo \
+la probabilidad de tener n personas es:\
+\>", "Text",
+ CellChangeTimes->{{3.8280900339135923`*^9, 3.828090054890003*^9}, {
+  3.828090104307724*^9, 3.8280901535393457`*^9}, {3.8280901845443773`*^9, 
+  3.828090345734521*^9}, {3.828090383690887*^9, 3.8280903880850677`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Pi]mm1", "[", 
+   RowBox[{"n_", ",", "\[Lambda]_", ",", " ", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "-", 
+     RowBox[{"\[Rho]mm1", "[", "\[Lambda]", "]"}]}], ")"}], "*", 
+   SuperscriptBox["\[Rho]mm1", "n"]}]}]], "Input",
+ CellChangeTimes->{{3.828090341806307*^9, 3.8280904299618073`*^9}}],
+
+Cell["\<\
+Definimos ahora Lq el n\[UAcute]mero esperado de personas que se encontrar\
+\[AAcute]n en la fila, mientras que Ls ser\[AAcute] el n\[UAcute]mero \
+esperado de personas que esperamos en el sistema (en la fila, y \
+adicionalmente siendo atendidos). As\[IAcute], a largo plazo tenemos:\
+\>", "Text",
+ CellChangeTimes->{{3.828090440902863*^9, 3.828090553132532*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"lsmm1", "[", 
+   RowBox[{"\[Lambda]_", ",", " ", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"\[Rho]mm1", "[", 
+    RowBox[{"\[Lambda]", ",", " ", "\[Mu]"}], "]"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"1", "-", 
+     RowBox[{"\[Rho]mm1", "[", 
+      RowBox[{"\[Lambda]", ",", " ", "\[Mu]"}], "]"}]}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.828090558658205*^9, 3.828090639032893*^9}, 
+   3.829866115071939*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"lqmm1", "[", 
+   RowBox[{"\[Lambda]_", ",", " ", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"\[Rho]mm1", "[", 
+    RowBox[{"\[Lambda]", ",", " ", "\[Mu]"}], "]"}], "*", 
+   RowBox[{"ls_mm1", "[", 
+    RowBox[{"\[Lambda]", ",", " ", "\[Mu]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.8280906124771852`*^9, 3.8280906606746397`*^9}, 
+   3.829866118440074*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.8280906844820423`*^9}],
+
+Cell["\<\
+Resulta curioso ahora que busquemos cu\[AAcute]nto tiempo esperamos antes de \
+ser atendido en este sistema, a esto lo denotaremos con una variable \
+aleatoria W. As\[IAcute], la probabilidad acumulada del tiempo ser\[AAcute]: \
+P(W \[LessEqual] t):\
+\>", "Text",
+ CellChangeTimes->{{3.8280906915963984`*^9, 3.828090898499937*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Pfilamm1", "[", 
+   RowBox[{"t_", ",", "\[Lambda]_", ",", " ", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{"1", "-", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"\[Rho]mm1", "[", 
+      RowBox[{"\[Lambda]", ",", " ", "\[Mu]"}], "]"}], ")"}], 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"(", 
+        RowBox[{"\[Mu]", "-", "\[Lambda]"}], ")"}]}], "t"}]]}]}]}]], "Input",
+ CellChangeTimes->{{3.828090900952722*^9, 3.82809090277859*^9}, {
+   3.828090963733605*^9, 3.828090964153199*^9}, {3.828448679527359*^9, 
+   3.828448757960998*^9}, {3.828448829463459*^9, 3.828448833734819*^9}, 
+   3.829866123151881*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.828448764075561*^9, 3.828448766071724*^9}}],
+
+Cell["\<\
+As\[IAcute], el tiempo total que se pasa en el sistema (haciendo fila y \
+siendo atendido) sigue una distribuci\[OAcute]n aleatoria que sigue:\
+\>", "Text",
+ CellChangeTimes->{{3.828448778220705*^9, 3.828448822157147*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PSistemamm1", "[", 
+   RowBox[{"t_", ",", "\[Lambda]_", ",", " ", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{"1", "-", 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{"\[Mu]", "-", "\[Lambda]"}], ")"}]}], "t"}]]}]}]], "Input",
+ CellChangeTimes->{
+  3.828448771123674*^9, {3.828448841433745*^9, 3.828448867034997*^9}, 
+   3.829866129522393*^9}],
+
+Cell[TextData[{
+ "La f\[OAcute]rmula de Little es la encargada de relacionar los valores \
+esperados para ambas distribuciones de probabilidad  con el n\[UAcute]mero \
+esperado de personas en el sistema con Ls y el n\[UAcute]mero de personas en \
+la fila con ",
+ Cell[BoxData[
+  FormBox["Lq", TraditionalForm]]],
+ " seg\[UAcute]n:\n"
+}], "Text",
+ CellChangeTimes->{{3.828448897818172*^9, 3.828448982083734*^9}, {
+  3.828449123059757*^9, 3.828449152926846*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Ls", "[", 
+   RowBox[{"Ts_", ",", "\[Lambda]_"}], "]"}], ":=", 
+  RowBox[{"\[Lambda]", " ", "Ts"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Lq", "[", 
+   RowBox[{"Tq_", ",", "\[Lambda]_"}], "]"}], ":=", 
+  RowBox[{"\[Lambda]", " ", "Tq"}]}]}], "Input",
+ CellChangeTimes->{{3.828449004842401*^9, 3.82844900688212*^9}, {
+  3.8284490458485003`*^9, 3.8284491136785393`*^9}}],
+
+Cell[" ", "Text",
+ Editable->False,
+ Selectable->False,
+ CellFrame->{{0, 0}, {0, 2}},
+ ShowCellBracket->False,
+ CellMargins->{{0, 0}, {1, 1}},
+ CellElementSpacings->{"CellMinHeight"->1},
+ CellFrameMargins->0,
+ CellFrameColor->RGBColor[0, 0, 1],
+ CellSize->{Inherited, 4}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Fila M/M/1/N
+\
+\>", "Subchapter",
+ CellChangeTimes->{{3.828449180519719*^9, 3.8284491923031883`*^9}, {
+  3.828450977719901*^9, 3.828450983319524*^9}}],
+
+Cell["\<\
+Ac\[AAcute], los clientes siguen llegando al sistema con intensidad \[Lambda] \
+y son atendidos por un \[UAcute]nico servidor con intensidad \[Mu]. La \
+diferencia con los sistemas M/M/1 es que ahora nos restringimos a una \
+capacidad m\[AAcute]xima de N personas. Si el n\[UAcute]mero total de \
+personas adentro del sistema es N, los posibles clientes rebotan y nunca \
+ingresan.
+\[LineSeparator]Recordemos que la definici\[OAcute]n de \[Rho] no ha \
+cambiado, sigue siendo la fracci\[OAcute]n de llegada vs atenci\[OAcute]n (\
+\[Lambda]/\[Mu]). Este factor determina c\[OAcute]mo se comporta el sistema a \
+largo plazo, esperamos ver distribuciones estacionarias seg\[UAcute]n:
+\
+\>", "Text",
+ CellChangeTimes->{{3.828449199930709*^9, 3.828449398583314*^9}, {
+  3.828449456014419*^9, 3.8284495016544456`*^9}, {3.828449554113886*^9, 
+  3.828449556058085*^9}, {3.8284496957908287`*^9, 3.828449705510276*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Rho]", "[", 
+   RowBox[{"\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{"\[Lambda]", "/", "\[Mu]"}]}]], "Input",
+ CellChangeTimes->{{3.828449598330935*^9, 3.8284496351588984`*^9}, {
+  3.8284501426788177`*^9, 3.8284501437362432`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Pi]nMM1N", "[", 
+   RowBox[{"n_", ",", "N_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{"Piecewise", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           RowBox[{"\[Rho]", "[", 
+            RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}]}], ")"}], 
+         SuperscriptBox[
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "n"]}], 
+        RowBox[{"1", "-", 
+         SuperscriptBox[
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], 
+          RowBox[{"N", "+", "1"}]]}]], ",", 
+       RowBox[{
+        RowBox[{"\[Rho]", "[", 
+         RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "\[NotEqual]", "1"}]}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{"N", "+", "1"}]], ",", 
+       RowBox[{
+        RowBox[{"\[Rho]", "[", 
+         RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "\[Equal]", "1"}]}], 
+      "}"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8284495606756153`*^9, 3.828449578449402*^9}, {
+   3.8284496511686363`*^9, 3.8284497420815973`*^9}, {3.828449796951291*^9, 
+   3.828449823487833*^9}, {3.828450082458116*^9, 3.828450092473613*^9}, {
+   3.82845017551805*^9, 3.828450182437248*^9}, 3.828450240024386*^9, 
+   3.828450558687604*^9, 3.8298661400660477`*^9},
+ CellTags->"Piecewise_templates"],
+
+Cell["\<\
+La probabilidad de bloqueo es una idea importante!, si el sistema alcanza N \
+sujetos (que ocurre con probabilidad \[Pi](n=N)). Por consiguiente tiene \
+sentido que definamos una tasa efectiva de llegada al sistema (medida que \
+considere que hay clientes que nunca ingresan al sistema.)\
+\>", "Text",
+ CellChangeTimes->{{3.828449884463337*^9, 3.828450030329645*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Lambda]effMM1N", "[", 
+   RowBox[{"N_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{"\[Lambda]", 
+   RowBox[{"(", 
+    RowBox[{"1", "-", 
+     RowBox[{"\[Pi]nMM1N", "[", 
+      RowBox[{"N", ",", "N", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}]}], 
+    ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.828450056689275*^9, 3.8284500703704023`*^9}, {
+  3.828450207710927*^9, 3.8284502511128473`*^9}, {3.8298661412645063`*^9, 
+  3.829866152373542*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.828450259560835*^9, 3.8284502615254707`*^9}}],
+
+Cell["\<\
+El n\[UAcute]mero de personas que se encuentran en el sistema tambi\[EAcute]n \
+es una funci\[OAcute]n que depende de la fracci\[OAcute]n \[Rho]:\
+\>", "Text",
+ CellChangeTimes->{{3.828450277027467*^9, 3.8284503167528963`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LsMM1N", "[", 
+   RowBox[{"N_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{"Piecewise", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"N", "/", "2"}], ",", 
+       RowBox[{
+        RowBox[{"\[Rho]", "[", 
+         RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "\[Equal]", "1"}]}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         RowBox[{"\[Rho]", "[", 
+          RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], 
+         RowBox[{"1", "-", 
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}]}]], "-", 
+        FractionBox[
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"N", "+", "1"}], ")"}], 
+          SuperscriptBox[
+           RowBox[{"\[Rho]", "[", 
+            RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], 
+           RowBox[{"N", "+", "1"}]]}], 
+         RowBox[{"1", "-", 
+          SuperscriptBox[
+           RowBox[{"\[Rho]", "[", 
+            RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], 
+           RowBox[{"N", "+", "1"}]]}]]}], ",", 
+       RowBox[{
+        RowBox[{"\[Rho]", "[", 
+         RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "!=", "1"}]}], "}"}]}], 
+    "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8284503228109283`*^9, 3.828450481910069*^9}, {
+   3.828450612694784*^9, 3.828450614295023*^9}, {3.82845069349988*^9, 
+   3.828450698613072*^9}, 3.829866143548317*^9}],
+
+Cell["Mientras que el n\[UAcute]mero de personas en la fila est\[AAcute] dado \
+por:", "Text",
+ CellChangeTimes->{{3.8284505067023973`*^9, 3.8284505210647783`*^9}, {
+  3.828450577093557*^9, 3.828450583280745*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LqMM1N", "[", 
+   RowBox[{"N_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{"Piecewise", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"LsMM1N", "[", 
+         RowBox[{"N", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}], "-", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", 
+          RowBox[{"1", "/", 
+           RowBox[{"(", 
+            RowBox[{"N", "+", "1"}], ")"}]}]}], ")"}]}], ",", 
+       RowBox[{
+        RowBox[{"\[Rho]", "[", 
+         RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "\[Equal]", "1"}]}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"LsMM1N", "[", 
+         RowBox[{"N", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}], "-", 
+        FractionBox[
+         RowBox[{"1", "-", 
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}]}], 
+         RowBox[{"1", "-", 
+          SuperscriptBox[
+           RowBox[{"\[Rho]", "[", 
+            RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], 
+           RowBox[{"N", "+", "1"}]]}]]}], ",", 
+       RowBox[{
+        RowBox[{"\[Rho]", "[", 
+         RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "!=", "1"}]}], "}"}]}], 
+    "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.828449908988276*^9, 3.8284499109672823`*^9}, {
+  3.8284505984598093`*^9, 3.828450682131456*^9}, {3.828450721616269*^9, 
+  3.828450750788001*^9}, {3.829866144801269*^9, 3.829866149953768*^9}}],
+
+Cell[BoxData[" "], "Input",
+ CellChangeTimes->{3.828450775515438*^9}],
+
+Cell[BoxData[" "], "Input",
+ CellChangeTimes->{3.828450776962385*^9}],
+
+Cell[" ", "Text",
+ Editable->False,
+ Selectable->False,
+ CellFrame->{{0, 0}, {0, 0.5}},
+ ShowCellBracket->False,
+ CellMargins->{{0, 0}, {1, 1}},
+ CellElementSpacings->{"CellMinHeight"->1},
+ CellFrameMargins->0,
+ CellFrameColor->RGBColor[0, 0, 1],
+ CellSize->{Inherited, 3}],
+
+Cell[" ", "Text",
+ Editable->False,
+ Selectable->False,
+ CellFrame->{{0, 0}, {0, 0.5}},
+ ShowCellBracket->False,
+ CellMargins->{{0, 0}, {1, 1}},
+ CellElementSpacings->{"CellMinHeight"->1},
+ CellFrameMargins->0,
+ CellFrameColor->RGBColor[0, 0, 1],
+ CellSize->{Inherited, 3}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.82845078706564*^9, 3.828450803701569*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sistema M/M/C", "Subchapter",
+ CellChangeTimes->{{3.828451026927848*^9, 3.8284510465385113`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.828450969148711*^9, 3.8284509732227573`*^9}}],
+
+Cell[TextData[{
+ "Ahora vamos a estudiar sistemas que tienen un n\[UAcute]mero de C personas \
+en el sistema. La llegada de clientes a\[UAcute]n es \[Lambda] y la tasa con \
+que cada servidor atiende sus clientes es una distribuci\[OAcute]n con par\
+\[AAcute]metro \[Mu].\nEsta idea es fundamental ya que vemos que la tasa con \
+quellegan nuevos clientes siempre es \[Lambda] y la tasa con que atienden a \
+los nuevos clientes depende de cuantas personas hay en el sistema, \
+as\[IAcute] definimos la matriz de salto como:\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"Q", "=", 
+    RowBox[{"(", GridBox[{
+       {
+        RowBox[{"-", "\[Lambda]"}], "\[Lambda]", "0", "0", "0", "0", "0", "0",
+         "0", "0"},
+       {"\[Mu]", 
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{"\[Mu]", "+", "\[Lambda]"}], ")"}]}], "\[Lambda]", "0", "0",
+         "0", "0", "0", "0", "0"},
+       {"0", 
+        RowBox[{"2", "\[Mu]"}], 
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", "\[Mu]"}], "+", "\[Lambda]"}], ")"}]}], "\[Lambda]", 
+        "0", "0", "0", "0", "0", "0"},
+       {"0", "0", 
+        RowBox[{"3", "\[Mu]"}], 
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"3", "\[Mu]"}], "+", "\[Lambda]"}], ")"}]}], "\[Lambda]", 
+        "0", "0", "0", "0", "0"},
+       {"0", "0", "0", 
+        RowBox[{"4", "\[Mu]"}], 
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"4", "\[Mu]"}], "+", "\[Lambda]"}], ")"}]}], "\[Lambda]", 
+        "0", "0", "0", "0"},
+       {"0", "0", "0", "0", "...", "...", "...", "0", "0", "0"},
+       {"0", "0", "0", "0", "0", "c\[Mu]", 
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{"c\[Mu]", "+", "\[Lambda]"}], ")"}]}], "\[Lambda]", "0", 
+        "0"},
+       {"0", "0", "0", "0", "0", "0", "...", "...", "...", "0"},
+       {"0", "0", "0", "0", "0", "0", "0", "0", GridBox[{
+          {"c\[Mu]", 
+           RowBox[{"-", 
+            RowBox[{"(", 
+             RowBox[{"c\[Mu]", "+", "\[Lambda]"}], ")"}]}], "\[Lambda]"}
+         }], "0"}
+      }], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\nAs\[IAcute] que tiene sentido que busquemos la distribuci\[OAcute]n de \
+configuraci\[OAcute]n estacionaria a largo plazo de este sistema. Para esto, \
+primero busquemos la probabilidad de que haya 0 personas en el sistema a \
+largo plazo:"
+}], "Text",
+ CellChangeTimes->{{3.8284510769593153`*^9, 3.828451306565548*^9}, {
+  3.828451365344198*^9, 3.82845164563513*^9}, {3.8284517496439657`*^9, 
+  3.8284518299394417`*^9}, {3.828451872165176*^9, 3.828451885017149*^9}}],
+
+Cell["", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Pi]0MMC", "[", 
+   RowBox[{"c_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  SuperscriptBox[
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      FractionBox[
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"c", " ", 
+          RowBox[{"\[Lambda]", "/", "\[Mu]"}]}], ")"}], "c"], 
+       RowBox[{"c", "!"}]], 
+      RowBox[{"(", 
+       FractionBox["1", 
+        RowBox[{"1", "-", 
+         RowBox[{"(", 
+          RowBox[{"\[Lambda]", "/", 
+           RowBox[{"(", "\[Mu]", ")"}]}], ")"}]}]], ")"}]}], "+", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "0"}], 
+       RowBox[{"c", "-", "1"}]], 
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox["1", 
+         RowBox[{"n", "!"}]], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"c", " ", 
+           RowBox[{"\[Lambda]", "/", "\[Mu]"}]}], ")"}], "n"]}], ")"}]}]}], 
+    ")"}], 
+   RowBox[{"-", "1"}]]}]], "Input",
+ CellChangeTimes->{{3.828451888978656*^9, 3.828452036674446*^9}, {
+  3.828452075130076*^9, 3.828452185758101*^9}, {3.82985166971948*^9, 
+  3.829851689099997*^9}, {3.829851721155343*^9, 3.829851734437335*^9}, {
+  3.829866548201705*^9, 3.829866551268383*^9}, {3.829866611726252*^9, 
+  3.829866663041843*^9}}],
+
+Cell["As\[IAcute], la medida estacionaria es:", "Text",
+ CellChangeTimes->{{3.8284521958893414`*^9, 3.828452202880065*^9}, 
+   3.829851698822195*^9, {3.8298517772108603`*^9, 3.829851777601461*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8298517026148033`*^9, 3.829851710856525*^9}, {
+  3.829851764602542*^9, 3.8298517734379597`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.829851771010467*^9, 3.82985177103924*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Pi]nMMC", "[", 
+   RowBox[{"n_", ",", "c_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{"Piecewise", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "n"], 
+         SuperscriptBox["c", "n"], 
+         RowBox[{"\[Pi]0MMC", "[", 
+          RowBox[{"c", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}]}], 
+        RowBox[{
+         RowBox[{"n", "!"}], 
+         SuperscriptBox["\[Mu]", "n"]}]], ",", 
+       RowBox[{"n", "<", "c"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "n"], 
+         SuperscriptBox["c", "n"], 
+         RowBox[{"\[Pi]0MMC", "[", 
+          RowBox[{"c", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}]}], 
+        RowBox[{
+         RowBox[{"c", "!"}], 
+         SuperscriptBox["c", 
+          RowBox[{"n", "-", "c"}]], 
+         SuperscriptBox["\[Mu]", "n"]}]], ",", 
+       RowBox[{"n", ">", "c"}]}], "}"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.82845221478758*^9, 3.828452307502988*^9}, {
+  3.828452339766797*^9, 3.8284523961724377`*^9}, {3.829866159561623*^9, 
+  3.829866162534008*^9}, {3.829867063300075*^9, 3.8298671032955227`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.828452404834179*^9, 3.828452416022859*^9}}],
+
+Cell["\<\
+Entonces, el n\[UAcute]mero de personas esperado Ls en el sistema y Lq en la \
+fila a largo plazo son:\
+\>", "Text",
+ CellChangeTimes->{{3.828452430725729*^9, 3.8284524550955257`*^9}, {
+  3.828452499708866*^9, 3.828452512310257*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LqMMC", "[", 
+   RowBox[{"c_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"\[Pi]0MMC", "[", 
+     RowBox[{"c", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}], 
+    RowBox[{"(", 
+     SuperscriptBox[
+      RowBox[{"\[Rho]", "[", 
+       RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "c"], ")"}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"\[Rho]", "[", 
+       RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "/", "c"}], ")"}]}], 
+   RowBox[{
+    RowBox[{"c", "!"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"\[Rho]", "[", 
+        RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}]}], ")"}], 
+     "2"]}]]}]], "Input",
+ CellChangeTimes->{{3.828452518350854*^9, 3.828452542337356*^9}, {
+  3.828452574483356*^9, 3.828452606252062*^9}, {3.8284526545021143`*^9, 
+  3.828452753876561*^9}, {3.829866164507596*^9, 3.829866166589445*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LsMMC", "[", 
+   RowBox[{"c_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"\[Rho]", "[", 
+    RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "+", 
+   RowBox[{
+    RowBox[{"\[Pi]0MMC", "[", 
+     RowBox[{"c", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}], 
+    FractionBox[
+     RowBox[{
+      RowBox[{"\[Rho]", "[", 
+       RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"c", " ", 
+         RowBox[{"\[Rho]", "[", 
+          RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}]}], ")"}], "c"]}], 
+     RowBox[{"\[Lambda]", " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{"\[Rho]", "[", 
+          RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}]}], ")"}], "2"], " ", 
+      RowBox[{"c", "!"}]}]]}]}]}]], "Input",
+ CellChangeTimes->{{3.828452742740741*^9, 3.82845281254239*^9}, {
+  3.828452931388739*^9, 3.828452963342564*^9}, {3.829866170346443*^9, 
+  3.8298661815143213`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8284529923931704`*^9, 3.8284530015957623`*^9}, {
+   3.829866253830304*^9, 3.8298662785953417`*^9}, {3.8298664426674843`*^9, 
+   3.829866449072317*^9}, {3.829866558971549*^9, 3.829866560974481*^9}, 
+   3.82986676233986*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8298667560265827`*^9, 3.8298667560357656`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.829866757941587*^9},
+ NumberMarks->False],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.829866759874148*^9, 3.829866759878278*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.829866489095489*^9, 3.829866489167398*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.829866479722562*^9},
+ NumberMarks->False],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8298664870709267`*^9, 3.829866487101046*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8298664818782663`*^9, 3.829866482324687*^9}},
+ NumberMarks->False],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8298664844971533`*^9, 3.8298664845352573`*^9}}],
+
+Cell["\<\
+Una vez tengamos los n\[UAcute]meros de personas esperados, calcular los \
+tiempos esperados para que estemos en la fila o en el sistema salen directo \
+de las f\[OAcute]rmulas de Little como:\
+\>", "Text",
+ CellChangeTimes->{{3.828453003422155*^9, 3.828453010339755*^9}, {
+  3.828453066368615*^9, 3.828453103241177*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TqMMC", "[", 
+   RowBox[{"c_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"LqMMC", "[", 
+    RowBox[{"c", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}], "/", 
+   "\[Lambda]"}]}]], "Input",
+ CellChangeTimes->{{3.82845310885634*^9, 3.8284531413954887`*^9}, {
+  3.829866185961803*^9, 3.829866196325326*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TsMMC", "[", 
+   RowBox[{"c_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"LsMMC", "[", 
+    RowBox[{"c", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}], "/", 
+   "\[Lambda]"}]}]], "Input",
+ CellChangeTimes->{{3.828453144963477*^9, 3.828453171917542*^9}, {
+  3.829866188258712*^9, 3.829866190872498*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.828453176814397*^9, 3.828453179157708*^9}}],
+
+Cell["\<\
+Bien, ya tenemos bien estudiada nuestro sistema de filas MMC, ahora veamos \
+algunas de las infinitas modificaciones que podemos aplicarle a este modelo \
+para que simule mejor sistemas reales (Muy \[UAcute]tiles en algunos entornos \
+como los computacionales).\
+\>", "Text",
+ CellChangeTimes->{{3.82845318938568*^9, 3.8284532993904133`*^9}, {
+  3.828453396223085*^9, 3.8284534117531633`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Sistema M/M/C con rechazo", "Section",
+ CellChangeTimes->{{3.828453461021353*^9, 3.82845347755225*^9}}],
+
+Cell[TextData[{
+ "Sabemos que los clientes en el mundo real piensan dos veces si ingresar o \
+no a una fila si ven una tienda muy llena. En este ejemplo vamos a estudiar \
+que si los clientes ven que todos los servidores est\[AAcute]n ocupados... \
+deciden si entrar con probabilidad p, o irse con probabilidad (1-p).\nVemos \
+entonces que en nuestra tasa de salida no se ve modificada (cada cajero \
+atiende con la misma intensidad |mu|), no obstante la tasa de llegada queda \
+siendo:\nq(i,i+1) = ",
+ Cell[BoxData[
+  TagBox[GridBox[{
+     {"\[Piecewise]", GridBox[{
+        {"\[Lambda]", 
+         RowBox[{"i", "<", "c"}]},
+        {
+         RowBox[{"p", " ", "\[Lambda]"}], 
+         RowBox[{"i", "\[GreaterEqual]", "c"}]},
+        {"0", 
+         RowBox[{"otro", " ", "modo"}]}
+       },
+       AllowedDimensions->{2, Automatic},
+       Editable->True,
+       GridBoxAlignment->{
+        "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+          "RowsIndexed" -> {}},
+       GridBoxItemSize->{
+        "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+         "RowsIndexed" -> {}},
+       GridBoxSpacings->{"Columns" -> {
+           Offset[0.27999999999999997`], {
+            Offset[0.84]}, 
+           Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+           Offset[0.2], {
+            Offset[0.4]}, 
+           Offset[0.2]}, "RowsIndexed" -> {}},
+       Selectable->True]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxItemSize->{
+     "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.35]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   "Piecewise",
+   DeleteWithContents->True,
+   Editable->False,
+   SelectWithContents->True,
+   Selectable->False]], "Input",
+  CellChangeTimes->{{3.828453951584764*^9, 3.828453959927184*^9}}],
+ "\n\nAs\[IAcute] que podemos buscar la condici\[OAcute]n necesaria para que \
+exista la distribuci\[OAcute]n estacionaria, esto nos llevar\[AAcute] a que \
+la probabilidad de que no haya personas en el sistema es:"
+}], "Text",
+ CellChangeTimes->{{3.828453484271443*^9, 3.828453604425626*^9}, {
+  3.8284536620246687`*^9, 3.8284536667326317`*^9}, {3.828453728930296*^9, 
+  3.828453782600622*^9}, {3.828453826242144*^9, 3.828453830123807*^9}, {
+  3.828453861562026*^9, 3.828453862393013*^9}, {3.828453965230901*^9, 
+  3.828454070223084*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.828453951584764*^9, 3.828453959927184*^9}, 
+   3.828453996943554*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Pi]0rechazoMMC", "[", 
+   RowBox[{"p_", ",", "c_", ",", "\[Lambda]_", ",", "\[Mu]_"}], "]"}], ":=", 
+  SuperscriptBox[
+   RowBox[{"[", 
+    RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"n", "=", "c"}], "Infinity"], 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox[
+         SuperscriptBox[
+          RowBox[{"\[Rho]", "[", 
+           RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "c"], 
+         RowBox[{"c", "!"}]], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"\[Rho]", "[", 
+            RowBox[{"\[Lambda]", ",", "\[Mu]"}], "]"}], "*", 
+           RowBox[{"p", "/", "c"}]}], ")"}], "\[Placeholder]"]}], ")"}], 
+      UnderoverscriptBox[
+       RowBox[{"+", " ", 
+        RowBox[{"\[Sum]", " "}]}], 
+       RowBox[{"n", "=", "0"}], 
+       RowBox[{"c", "-", "1"}]], 
+      FractionBox["1", 
+       RowBox[{"n", "!"}]], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Lambda]", "/", "\[Mu]"}], ")"}], "n"]}]}], "]"}], 
+   RowBox[{"-", "1"}]]}]], "Input",
+ CellChangeTimes->{{3.8284541170676403`*^9, 3.828454287744578*^9}, 
+   3.8298662007890472`*^9},
+ EmphasizeSyntaxErrors->True],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.828453946857642*^9, 3.828453946901672*^9}}],
+
+Cell["\<\
+Y con ella, es sencillo que busquemos la probabilidad de tener n personas a \
+largo plazo mediante:\
+\>", "Text",
+ CellChangeTimes->{{3.828454307516404*^9, 3.828454356706112*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Pi]nrechazoMMC", "[", 
+   RowBox[{"p_", ",", "n_", ",", "c_", ",", "\[Lambda]_", ",", "\[Mu]_"}], 
+   "]"}], ":=", 
+  RowBox[{"Piecewise", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "n"], 
+         RowBox[{"\[Pi]0rechazoMMC", "[", 
+          RowBox[{"c", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}]}], 
+        RowBox[{
+         RowBox[{"n", "!"}], 
+         SuperscriptBox["\[Mu]", "n"]}]], ",", 
+       RowBox[{"n", "<", "c"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "c"], 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"\[Lambda]", " ", "p"}], ")"}], 
+          RowBox[{"n", "-", "c"}]], 
+         RowBox[{"\[Pi]0rechazoMMC", "[", 
+          RowBox[{"c", ",", "\[Lambda]", ",", "\[Mu]"}], "]"}]}], 
+        RowBox[{
+         RowBox[{"c", "!"}], 
+         SuperscriptBox["\[Mu]", "c"], 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"c", " ", "\[Mu]"}], ")"}], 
+          RowBox[{"n", "-", "c"}]]}]], ",", 
+       RowBox[{"n", ">", "c"}]}], "}"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.828454361758524*^9, 3.828454480359169*^9}, {
+  3.829866203302402*^9, 3.829866211310789*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Sistema M/M/C con clientes ",
+ Cell[BoxData[
+  FormBox["impacientes", TraditionalForm]]]
+}], "Section",
+ CellChangeTimes->{{3.8284545102436333`*^9, 3.828454529908687*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1366, 704},
+WindowMargins->{{1, Automatic}, {Automatic, 11}},
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Piecewise_templates"->{
+  Cell[8298, 238, 1505, 40, 74, "Input",
+   CellTags->"Piecewise_templates"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Piecewise_templates", 32193, 923}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 108, 1, 93, "Title"],
+Cell[691, 25, 271, 9, 8, "Text"],
+Cell[CellGroupData[{
+Cell[987, 38, 128, 2, 63, "Subchapter"],
+Cell[1118, 42, 453, 8, 71, "Text"],
+Cell[1574, 52, 278, 7, 33, "Input"],
+Cell[1855, 61, 434, 7, 31, "Text"],
+Cell[2292, 70, 359, 9, 35, "Input"],
+Cell[2654, 81, 373, 6, 51, "Text"],
+Cell[3030, 89, 451, 12, 33, "Input"],
+Cell[3484, 103, 399, 10, 33, "Input"],
+Cell[3886, 115, 70, 1, 30, "Input"],
+Cell[3959, 118, 341, 6, 51, "Text"],
+Cell[4303, 126, 678, 17, 37, "Input"],
+Cell[4984, 145, 92, 1, 30, "Input"],
+Cell[5079, 148, 232, 4, 31, "Text"],
+Cell[5314, 154, 429, 12, 37, "Input"],
+Cell[5746, 168, 460, 10, 71, "Text"],
+Cell[6209, 180, 413, 10, 55, "Input"],
+Cell[6625, 192, 271, 9, 8, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6933, 206, 160, 5, 97, "Subchapter"],
+Cell[7096, 213, 919, 15, 129, "Text"],
+Cell[8018, 230, 277, 6, 33, "Input"],
+Cell[8298, 238, 1505, 40, 74, "Input",
+ CellTags->"Piecewise_templates"],
+Cell[9806, 280, 377, 6, 51, "Text"],
+Cell[10186, 288, 491, 12, 33, "Input"],
+Cell[10680, 302, 94, 1, 30, "Input"],
+Cell[10777, 305, 237, 4, 31, "Text"],
+Cell[11017, 311, 1478, 42, 76, "Input"],
+Cell[12498, 355, 213, 3, 31, "Text"],
+Cell[12714, 360, 1491, 41, 71, "Input"],
+Cell[14208, 403, 69, 1, 30, "Input"],
+Cell[14280, 406, 69, 1, 30, "Input"],
+Cell[14352, 409, 273, 9, 5, "Text"],
+Cell[14628, 420, 273, 9, 5, "Text"],
+Cell[14904, 431, 91, 1, 30, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15032, 437, 103, 1, 63, "Subchapter"],
+Cell[15138, 440, 94, 1, 30, "Input"],
+Cell[15235, 443, 2649, 63, 352, "Text"],
+Cell[17887, 508, 16, 0, 30, "Text"],
+Cell[17906, 510, 1282, 38, 72, "Input"],
+Cell[19191, 550, 197, 2, 31, "Text"],
+Cell[19391, 554, 145, 2, 30, "Input"],
+Cell[19539, 558, 91, 1, 30, "Input"],
+Cell[19633, 561, 1283, 35, 103, "Input"],
+Cell[20919, 598, 92, 1, 30, "Input"],
+Cell[21014, 601, 243, 5, 31, "Text"],
+Cell[21260, 608, 934, 26, 77, "Input"],
+Cell[22197, 636, 1018, 28, 74, "Input"],
+Cell[23218, 666, 271, 4, 30, "Input"],
+Cell[23492, 672, 96, 1, 30, "Input"],
+Cell[23591, 675, 89, 2, 30, "Input"],
+Cell[23683, 679, 92, 1, 30, "Input"],
+Cell[23778, 682, 92, 1, 30, "Input"],
+Cell[23873, 685, 89, 2, 30, "Input"],
+Cell[23965, 689, 94, 1, 30, "Input"],
+Cell[24062, 692, 115, 2, 30, "Input"],
+Cell[24180, 696, 96, 1, 30, "Input"],
+Cell[24279, 699, 331, 6, 31, "Text"],
+Cell[24613, 707, 362, 9, 33, "Input"],
+Cell[24978, 718, 361, 9, 33, "Input"],
+Cell[25342, 729, 92, 1, 30, "Input"],
+Cell[25437, 732, 403, 7, 51, "Text"],
+Cell[CellGroupData[{
+Cell[25865, 743, 109, 1, 65, "Section"],
+Cell[25977, 746, 2713, 63, 168, "Text"],
+Cell[28693, 811, 118, 2, 30, "Input"],
+Cell[28814, 815, 1208, 36, 70, "Input"],
+Cell[30025, 853, 92, 1, 30, "Input"],
+Cell[30120, 856, 189, 4, 31, "Text"],
+Cell[30312, 862, 1354, 39, 71, "Input"]
+}, Open  ]],
+Cell[31681, 904, 189, 5, 65, "Section"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
